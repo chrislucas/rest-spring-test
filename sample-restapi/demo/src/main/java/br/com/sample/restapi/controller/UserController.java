@@ -34,8 +34,8 @@ public class UserController {
 		return this.userService.get(userId);
 	}
 	
-	@PostMapping("/app/user")
-	public void save(User user) {
+	@PostMapping("/app/user/save")
+	public void saveUser(@RequestBody User user) {
 		this.userService.save(user);
 	}
 	
@@ -44,7 +44,7 @@ public class UserController {
 		this.userService.delete(userId);
 	}
 	
-	@PutMapping("/app/user/delete/{id}")
+	@PutMapping("/app/user/update/{id}")
 	public void update(@RequestBody User user, @PathVariable(name="id") long userId) {
 		User user1 = userService.get(userId);
 		if(user1 != null) {

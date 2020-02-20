@@ -12,15 +12,17 @@ public class User {
 
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final long id;
+	private long id;
 	@Column(name="name")
-	private final String name;
+	private String name;
 	@Column(name="document")
-	private final String document;
+	private String document;
 	@Column(name="email_address")
-	private final String emailAddress;
+	private String emailAddress;
 	@Column(name="register_date")
-	private final long registerDate;
+	private long registerDate;
+	
+	public User() {}
 	
 	public User(long id, String name, String document, String emailAddress, long registerDate) {
 		this.id = id;

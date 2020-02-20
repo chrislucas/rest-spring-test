@@ -11,13 +11,16 @@ public class CheckPoint {
 
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final long id;
+	private long id;
 	@Column(name = "fk_user_id")
-	private final long userId;
+	private long userId;
 	@Column(name = "date")
-	private final long date;
+	private long date;
 	@Column(name = "entrance")
-	private final boolean entrance;
+	private boolean entrance;
+	
+	public CheckPoint() {}
+	
 	public CheckPoint(long id, long userId, long date, boolean entrance) {
 		this.id = id;
 		this.userId = userId;

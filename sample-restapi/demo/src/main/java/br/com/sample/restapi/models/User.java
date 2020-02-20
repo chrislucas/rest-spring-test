@@ -54,4 +54,11 @@ public class User {
 		return registerDate;
 	}
 	
+	public static User emptyUser() {
+		return new User();
+	}
+	
+	public static boolean isEmpty(User user) {
+		return user.getName() == null || user.getName().isEmpty();
+	}
 }

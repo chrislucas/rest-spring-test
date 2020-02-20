@@ -45,11 +45,14 @@ public class UserController {
 	}
 	
 	@PutMapping("/app/user/update/{id}")
-	public void update(@RequestBody User user, @PathVariable(name="id") long userId) {
-		User user1 = userService.get(userId);
-		if(user1 != null) {
-			userService.update(user);
+	public User update(@RequestBody User user, @PathVariable(name="id") long userId) {
+		User target = userService.get(userId);
+		if(target != null && ! User.isEmpty(target)) {
+			return userService.updateById(userId, user);
 		}
+		else {
+			return target;
+		}			
 	}
 	
 }

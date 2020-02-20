@@ -83,12 +83,12 @@ Atualiza dados de um usuário através do seu ID - **Response 200**
 
 ## Apis para acessar o ponto eletrônico de um usuário
 
-# GET /app/checkpoints
+## GET /app/checkpoints
 
 Recupera as marcações de ponto eletrônico da base
 
 
-# GET /app/checkpoints/{id}
+## GET /app/checkpoints/{id}
 
 Recupera as marcações de ponto eletrônico de um determinado usuário através do seu ID
 
@@ -115,7 +115,7 @@ Recupera as marcações de ponto eletrônico de um determinado usuário através
 ]
 ```
 
-# POST /app/checkpoint/save
+## POST /app/checkpoint/save
 
 Guarda um registro de marcação de ponto de um usuário
 

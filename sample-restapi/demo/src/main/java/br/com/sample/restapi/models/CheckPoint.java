@@ -27,6 +27,7 @@ public class CheckPoint {
 		this.date = date;
 		this.entrance = entrance;
 	}
+
 	public long getId() {
 		return id;
 	}

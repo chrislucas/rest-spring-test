@@ -2,6 +2,9 @@ package br.com.sample.restapi.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public interface ISimpleService<T> extends IService<T>{
 
 	@Override

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sample.restapi.models.User;
-import br.com.sample.restapi.models.UserRepository;
+import br.com.sample.restapi.repositories.UserRepository;
 
 
 @Service
@@ -54,10 +54,4 @@ public class UserService implements IService<User> {
 				, model.getEmailAddress());
 		return this.userRepository.getOne(id);
 	}
-	
-	
-	
-	
-	
-
 }

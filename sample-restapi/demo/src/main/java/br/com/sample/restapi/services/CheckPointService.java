@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sample.restapi.models.CheckPoint;
 import br.com.sample.restapi.repositories.CheckPointRepository;
@@ -26,5 +27,10 @@ public class CheckPointService implements ISimpleService<CheckPoint> {
 	@Override
 	public void save(CheckPoint model) {
 		this.repository.save(model);
+	}
+	
+	@Transactional
+	public List<CheckPoint> getByUserId(long userId) {
+		return this.repository.findByUserId(userId);
 	}
 }

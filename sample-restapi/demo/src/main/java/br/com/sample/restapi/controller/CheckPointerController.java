@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +23,13 @@ public class CheckPointerController {
 	}
 
 	@GetMapping("/app/checkpoints")
-	public List<CheckPoint> getUsers() {
+	public List<CheckPoint> getCheckPoints() {
 		return this.checkPointService.getAll();
+	}
+	
+	@GetMapping("/app/checkpoints/{id}")
+	public List<CheckPoint> getCheckpointByUserId(@PathVariable(name="id") long userId) {
+		return this.checkPointService.getByUserId(userId);
 	}
 	
 	@PostMapping("/app/checkpoint/save")

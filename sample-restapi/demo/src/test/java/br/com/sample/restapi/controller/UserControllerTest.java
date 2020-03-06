@@ -49,7 +49,7 @@ public class UserControllerTest {
 			mvc.perform(get("/app/users")
 					.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
-			.andExpect(jsonPath("$", Matchers.hasSize(Matchers.equalTo(1))))
+			.andExpect(jsonPath("$", Matchers.hasSize(Matchers.equalTo(users.size()))))
 			.andExpect(jsonPath("$[0].name", is(userTest.getName())));
 		} catch (Exception e) {
 

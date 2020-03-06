@@ -13,12 +13,12 @@ import br.com.sample.restapi.models.CheckPoint;
 import br.com.sample.restapi.services.CheckPointService;
 
 @RestController
-public class CheckPointerController {
+public class CheckPointController {
 
 	@Autowired
 	private CheckPointService checkPointService;
 	
-	public CheckPointerController(CheckPointService checkPointService) {
+	public CheckPointController(CheckPointService checkPointService) {
 		this.checkPointService = checkPointService;
 	}
 

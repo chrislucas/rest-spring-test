@@ -25,7 +25,11 @@ public class User {
 	public User() {}
 	
 	public User(long id, String name, String document, String emailAddress, long registerDate) {
+		this(name, document, emailAddress, registerDate);
 		this.id = id;
+	}
+	
+	public User(String name, String document, String emailAddress, long registerDate) {
 		this.name = name;
 		this.document = document;
 		this.emailAddress = emailAddress;

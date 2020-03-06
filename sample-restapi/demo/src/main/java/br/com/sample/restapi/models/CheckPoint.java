@@ -22,7 +22,11 @@ public class CheckPoint {
 	public CheckPoint() {}
 	
 	public CheckPoint(long id, long userId, long date, boolean entrance) {
+		this(userId, date, entrance);
 		this.id = id;
+	}
+	
+	public CheckPoint(long userId, long date, boolean entrance) {
 		this.userId = userId;
 		this.date = date;
 		this.entrance = entrance;

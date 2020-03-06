@@ -1,24 +1,19 @@
 package br.com.sample.restapi.controller;
 
-import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -54,14 +49,51 @@ public class UserControllerTest {
 			mvc.perform(get("/app/users")
 					.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())
-			//andExpect(jsonPath("$", hasSize(1)))
+			.andExpect(jsonPath("$", Matchers.hasSize(Matchers.equalTo(1))))
 			.andExpect(jsonPath("$[0].name", is(userTest.getName())));
 		} catch (Exception e) {
 
 			System.out.println(e.getMessage());
 		}
+	}
 	
+	@Test
+	public void givenUserListAndAUserIdThenGetSpecificUserById() {
 		
+		User[] users = new User[] {
+			new User(1
+					, "a"
+					, "333.333.333-11"
+					, "a@gmail.com"
+					, 1583234274)
+			, 
+			new User(2
+					, "b"
+					, "333.111.333-11"
+					, "b@gmail.com"
+					, 2583234274L)
+			,new User(3
+					, "c"
+					, "222.333.333-11"
+					, "c@gmail.com"
+					, 3583234274L)
+		};
+		
+		
+		int userId = 2;
+		
+		when(userService.get(userId)).thenReturn(users[1]);
+		
+		try {
+			mvc.perform(get(String.format("/app/user/%d" , userId))
+					.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$", Matchers.hasSize(1)))
+			.andExpect(jsonPath("$[0].name", is(users[1].getName())));
+		} catch (Exception e) {
+
+			System.out.println(e.getMessage());
+		}
 	}
 	
 }
